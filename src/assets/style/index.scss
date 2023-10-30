@@ -1,0 +1,174 @@
+*,
+*::before,
+*::after{
+padding: 0;
+margin: 0;
+border: 0;
+box-sizing: inherit;
+}
+html{
+font-size:100%;
+box-sizing:border-box;
+}
+body{
+padding: 0;
+margin: 0;
+line-height: 1;
+font-size: 1rem;
+color:#000;
+background:#fff;
+}
+a,
+a:visited,
+a:active{
+text-decoration: none;
+}
+ul,
+ol,
+li{
+list-style: none;
+}
+img{
+vertical-align: top;
+}
+a,
+button,
+svg{
+cursor: pointer;
+}
+button{
+background-color:transperent;
+}
+
+/*===========================================================================================*/
+
+.container{
+	padding: 0px 15px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 70vw 30vw;
+	align-items: start;
+	justify-content: space-between;
+	gap: 50px;
+	overflow:clip;
+	@media(max-width:767.98px){
+		display: flex;
+	}
+}
+
+/*===========================================================================================*/
+
+.title {
+	font-size: 35px;
+	font-weight: 700;
+	&:not(:last-child){
+		margin-bottom: 30px;
+	}
+}
+
+.cards__container{
+
+}
+
+.product {
+	&__container{
+		&:not(:last-child){
+			margin-bottom: 50px;
+		}
+	}
+
+	&__card {
+		border: 3px solid #000;
+		padding: 50px;
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__item {
+		display: grid;
+		align-items: center;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 30px;
+		@media(max-width:767.98px){
+			justify-content: center;
+			grid-template-columns: auto;
+			margin: 0 auto;
+			gap: 20px;
+		}
+	}
+
+	&__info {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+		@media(max-width:767.98px){
+			justify-content: center;
+			text-align: center;
+			gap: 20px;
+		}
+	}
+
+	&__name {}
+
+	&__price {}
+
+	&__button {
+		padding-block: 10px;
+		max-width: 100px;
+	}
+}
+
+.product {
+
+	&__check {
+		margin-top: 50px;
+		display: grid;
+		align-items: center;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 30px;
+		@media(max-width:767.98px){
+			justify-content: center;
+			grid-template-columns: auto;
+			gap: 20px;
+		}
+	}
+
+	&__check-info {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+		@media(max-width:767.98px){
+			justify-content: center;
+			text-align: center;
+			gap: 20px;
+		}
+	}
+
+	&__check-name {}
+
+	&__check-price {}
+
+	&__check-button {
+		padding-block: 10px;
+		max-width: 100px;
+	}
+}
+
+.error-message{
+	color: red;
+	font-size: 20px;
+	padding-top: 10px;
+}
+
+.filters__container{
+	
+	select{
+		border: 1px solid #000;
+	}
+}
