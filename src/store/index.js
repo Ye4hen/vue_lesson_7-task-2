@@ -46,6 +46,7 @@ export default createStore({
 		selectedCurrency: 'Гривня',
 		selectedCurrencyMark: '₴',
 		dollarRate: 38,
+		messageStyle: null,
 	},
 	getters: {
 		productsToBuyList: (state) => state.productsToBuyList,
@@ -58,6 +59,7 @@ export default createStore({
 			return totalSum;
 		},
 		errorMessage: (state) => state.errorMessage,
+		messageStyle: (state) => state.messageStyle,
 		currenciesList: (state) => state.currenciesList,
 		getSelectedCurrency: (state) => state.selectedCurrency,
 		getDollarRate: (state) => state.dollarRate,
@@ -78,9 +80,11 @@ export default createStore({
 		},
 		payTheCart(state) {
 			if (!state.productsCartList.length) {
-				state.errorMessage = "Додайте, щось до корзини перед тим, як її оплачувати"
+				state.errorMessage = "⚠️Додайте, щось до кошику перед тим, як його оплачувати"
+				state.messageStyle = "payment-error"
 			} else {
-				state.errorMessage = null
+				state.messageStyle = "payment-verified"
+				state.errorMessage = '✅Кошик успішно оплачений'
 				const removedProducts = state.productsCartList.splice(0);
 				state.productsToBuyList.push(...removedProducts);
 			}
@@ -89,7 +93,6 @@ export default createStore({
 			state.selectedCurrency = currency;
 		},
 		changePrice(state) {
-			console.log('changePrice mutation is being executed');
 			state.productsToBuyList.forEach((product) => {
 				if (state.selectedCurrency === 'Доллар') {
 					product.price = (product.price / state.dollarRate).toFixed(2);
@@ -105,12 +108,9 @@ export default createStore({
 					product.price = (product.price * state.dollarRate).toFixed(2);
 				}
 			});
-
-			console.log(state.productsToBuyList);
-			console.log(state.productsCartList);
 		},
 	},
-	//функції, які виклиаємо з компонентів
+
 	actions: {
 		addNewProduct({ commit }, { productData, index }) {
 			commit('addProduct', {
@@ -139,7 +139,6 @@ export default createStore({
 			commit('setSelectedCurrency', currency);
 		},
 		updateProductPrices({ commit }) {
-			console.log('updateProductPrices action is triggered');
 			commit('changePrice');
 		},
 	},

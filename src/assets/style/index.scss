@@ -160,15 +160,22 @@ background-color:transperent;
 	}
 }
 
-.error-message{
-	color: red;
-	font-size: 20px;
-	padding-top: 10px;
-}
 
 .filters__container{
 	
 	select{
 		border: 1px solid #000;
 	}
+}
+
+.payment-message{
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.payment-verified{
+	color: green;
+}
+.payment-error{
+	color: red;
 }

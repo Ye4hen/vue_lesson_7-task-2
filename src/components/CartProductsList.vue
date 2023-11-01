@@ -17,7 +17,7 @@
                     <div class="product__check-price">{{ displayTotalPrice }}{{ getSelectedCurrencyMark }}</div>
                 </div>
                 <button @click="payTheNewCart" class="product__check-button">Оплатити</button>
-                <div class="error-message">{{ errorMessage }}</div>
+                <div :class="messageStyle" class="payment-message">{{ errorMessage }}</div>
             </div>
         </div>
     </div>
@@ -29,10 +29,16 @@ export default {
     name: 'CartProductsList',
 
     computed: {
-        ...mapGetters(['productsCartList', 'calcProductsPriceSum', 'errorMessage', 'getSelectedCurrencyMark']),
+        ...mapGetters([
+            'productsCartList',
+            'calcProductsPriceSum',
+            'errorMessage',
+            'getSelectedCurrencyMark',
+            'messageStyle',
+        ]),
         displayTotalPrice() {
             const total = this.calcProductsPriceSum
-            return typeof total === 'number' ? total.toFixed(2) : '0.00'
+            return typeof total === 'number' ? total.toFixed(2) : 'Some error happened:('
         },
     },
     methods: {
@@ -49,6 +55,3 @@ export default {
     },
 }
 </script>
-
-<style lang="scss" scoped>
-</style>
